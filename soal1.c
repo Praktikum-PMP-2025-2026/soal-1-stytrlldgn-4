@@ -27,7 +27,7 @@ int compare(const void *a, const void *b){
 
     //jikasama, tahun naik, dari terbesar
     if (m1->tahun != m2->tahun) {
-       return m2->tahun - m1->tahun;
+       return m1->tahun - m2->tahun; //sedang di edit
     }
     
     //jikasama, nilai turun, dari terkecil
@@ -41,6 +41,7 @@ int compare(const void *a, const void *b){
  
 int main() {
     int n;
+    //Membaca jumlah Artefak (N)
     if (scanf("%d", &n) != 1) {
         return 0; // Keluar jika tidak ada input valid
     }
