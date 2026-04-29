@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct {
+typedef struct { 
    char nama[100];
    char kategori[100];
    int tahun;
@@ -22,17 +22,17 @@ int compare(const void *a, const void *b){
 
     //kategori alfabetis naik, dari terkecil
     if (m1->kategori != m2->kategori) {
-       return m2->kategori - m1->kategori; //tukar
+       return m2->kategori - m1->kategori;
     }
 
     //jikasama, tahun naik, dari terbesar
     if (m1->tahun != m2->tahun) {
-       return m2->tahun - m1->tahun; //sedang di edit, UDH NORMAl
+       return m2->tahun - m1->tahun;
     }
-    
+
     //jikasama, nilai turun, dari terkecil
     if (m1->nilai != m2->nilai) {
-       return m1->nilai - m2->nilai;
+       return m2->nilai - m1->nilai;
     }
 
     //jikasama, nama lebih kecil lebih baik
@@ -41,34 +41,24 @@ int compare(const void *a, const void *b){
  
 int main() {
     int n;
-    //Membaca jumlah Artefak
     if (scanf("%d", &n) != 1) {
-        return 0; // Keluar jika tidak ada input valid
+        return 0;
     }
-
     if (n <= 0) {
-        return 0; // Menangani kasus jika N bernilai 0 atau negatif
+        return 0;
     }
-
-    //Alokasikan array dinamis dari struct Artefak
     Artefak *dataArtefak = (Artefak *)malloc(n * sizeof(Artefak));
     if (dataArtefak == NULL) {
         printf("Gagal mengalokasikan memori.\n");
         return 1;
     }
-
-    // Membaca data setiap Artefak
     for (int i = 0; i < n; i++) {
         scanf("%s %s %d %d", dataArtefak[i].nama, dataArtefak[i].kategori, &dataArtefak[i].tahun, &dataArtefak[i].nilai);
     }
-    // Mengurutkan data menggunakan qsort
     qsort(dataArtefak, n, sizeof(Artefak), compare);
-
-    //output
     for (int i = 0; i < n ; i++) {
         printf("%s %s %d %d\n", dataArtefak[i].nama, dataArtefak[i].kategori, dataArtefak[i].tahun, dataArtefak[i].nilai);
     }
-
    free(dataArtefak);
    return 0;
 }
