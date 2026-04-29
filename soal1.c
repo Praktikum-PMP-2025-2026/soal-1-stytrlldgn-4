@@ -21,13 +21,13 @@ int compare(const void *a, const void *b){
     Artefak *m2 = (Artefak *)b;
 
     //kategori alfabetis naik, dari terkecil
-    if (m1->kategori != m2->kategori) {
+    if (strcmp(m1->kategori, m2->kategori )!=0) {
        return m2->kategori - m1->kategori;
     }
 
     //jikasama, tahun naik, dari terbesar
     if (m1->tahun != m2->tahun) {
-       return m2->tahun - m1->tahun;
+       return m1->tahun - m2->tahun;
     }
 
     //jikasama, nilai turun, dari terkecil
